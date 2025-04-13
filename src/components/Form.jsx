@@ -32,7 +32,7 @@ export default function Form({ categories, expenses, setExpenses }) {
   }
 
   return (
-    <div className="w-[30vw] h-[50%] darkbg-slategray  p-6 flex rounded-md">
+    <div className="w-[30vw] h-[50%] dark:bg-slategray p-6 flex rounded-md">
       <form
         className="w-full h-full flex flex-col gap-2.5 mt-2.5"
         onSubmit={handleSubmit}
