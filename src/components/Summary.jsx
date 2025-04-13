@@ -3,7 +3,7 @@ export default function Summary({ categories, summaryValues }) {
     <li className=" flex justify-between" key={category}>
       <span>{category}:</span>
       <span>
-        {summaryValues[category] ? `$${summaryValues[category]}` : "$0"}
+        {summaryValues[category] ? `$${summaryValues[category]}` : "-"}
       </span>
     </li>
   ));
