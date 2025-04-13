@@ -8,7 +8,7 @@ export default function Summary({ categories, summaryValues }) {
     </li>
   ));
   return (
-    <div className=" dark:bg-slategray h-[calc(100%-20px)] w-[50%] rounded-md p-2.5 border ">
+    <div className=" border-lightgrey dark:bg-slategray dark:border-softgray dark:text-white h-[calc(100%-20px)] w-[50%] rounded-md p-2.5 border ">
       <h2 className=" font-bold">Summary</h2>
       <ul>{listItem}</ul>
     </div>

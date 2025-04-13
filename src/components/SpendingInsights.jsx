@@ -9,7 +9,7 @@ export default function SpendingInsights({ summaryValues, categories }) {
   }));
 
   return (
-    <div className="dark:bg-slategray h-[calc(100%-20px)] w-[50%] rounded-md p-2.5 border">
+    <div className="border-lightgrey dark:bg-slategray dark:text-white dark:border-softgray h-[calc(100%-20px)] w-[50%] rounded-md p-2.5 border">
       <h2 className=" font-bold">Spending Insights</h2>
       <div className=" flex justify-between">
         <PieChart series={[{ data: pieData }]} width={250} height={100} />

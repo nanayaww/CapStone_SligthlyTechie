@@ -13,10 +13,10 @@ export default function Expensetracker() {
   const [totalBalance, setTotalBalance] = useState(1500.0);
   const [summaryValues, setSummaryValues] = useState({});
   const [filteredExpenses, setFilteredExpenses] = useState([]);
-  const [dark, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
-    setDarkMode(!dark);
+    setDarkMode(!darkMode);
   };
   const initialBalance = 1500.0;
 
@@ -80,8 +80,12 @@ export default function Expensetracker() {
   };
 
   return (
-    <div className={` ${dark} flex flex-col h-full`}>
-      <Header dark={dark} toggleDarkMode={toggleDarkMode} />
+    <div
+      className={` ${
+        !darkMode ? "dark" : ""
+      } flex flex-col h-full dark:bg-charcoal`}
+    >
+      <Header dark={darkMode} toggleDarkMode={toggleDarkMode} />
       <div className="flex w-full h-full gap-4">
         {/* Add expense form */}
         <Form
@@ -97,7 +101,7 @@ export default function Expensetracker() {
           </div>
           {/* This shows list of expenses */}
           <div>
-            <div className="h-[20%] flex justify-between items-center dark:bg-charcoal bg-white">
+            <div className="h-[20%] flex justify-between items-center dark:bg-charcoal dark:text-white ">
               <h2>Expenses</h2>
               <span className=" flex">
                 <Filter
@@ -108,7 +112,8 @@ export default function Expensetracker() {
                   setExpenses={setExpenses}
                 />
                 <button
-                  className="border rounded-md ml-5 darkbg-slategray px-2.5 py-1"
+                  className="border rounded-md ml-5 dark:bg-slategray dark:hover:bg-slate-400
+                  dark:hover:text-black  px-2.5 py-1"
                   onClick={exportCSV}
                 >
                   Export csv
@@ -116,7 +121,7 @@ export default function Expensetracker() {
               </span>
             </div>
             {/* Display table */}
-            <div className="dark:bg-slategray p-2.5 rounded-md h-40 overflow-y-scroll">
+            <div className="border-lightgrey dark:bg-slategray border dark:border-softgray p-2.5 rounded-md h-40 overflow-y-scroll">
               <Table expenses={expenses} setExpenses={setExpenses} />
             </div>
           </div>

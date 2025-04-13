@@ -2,17 +2,24 @@ export default function SelectField({ categories, name, value, setExpense }) {
   return (
     <div>
       <select
-        className=" border rounded-md w-[100%] px-2.5 py-1 "
+        className=" border border-lightgrey dark:border-softgray rounded-md w-[100%] dark:text-white px-2.5 py-1 "
         name={name}
         value={value}
         onChange={(e) => setExpense(name, e.target.value)}
       >
-        <option className=" text-black" value="">
-          Select {name}
+        <option
+          className="dark:bg-slategray dark:text-white text-black "
+          value=""
+        >
+          {name}
         </option>
 
         {categories.map((category) => (
-          <option className=" text-black" key={category} value={category}>
+          <option
+            className=" dark:bg-slategray dark:text-white text-black"
+            key={category}
+            value={category}
+          >
             {category}
           </option>
         ))}

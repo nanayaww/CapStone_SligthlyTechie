@@ -10,10 +10,7 @@ export default function Table({ expenses, setExpenses }) {
   }
 
   return (
-    <table
-      className=" w-full text-left border-collapse   
-    "
-    >
+    <table className=" w-full text-left border-collapse ">
       <thead>
         <tr className="border-b-1 border-softgray">
           <TableHead value="Description" />

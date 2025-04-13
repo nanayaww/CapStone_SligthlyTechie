@@ -16,6 +16,12 @@
   --color-slategray: #2d3748;
 
   /* Light */
+  --color-primary: "#2563eb";
+  --color-background: "#f9fafb";
+  --color-card: "#ffffff";
+  --color-text: "#111827";
+  --color-muted: "#6b7280";
+  --color-border: "#e5e7eb";
 }
 
 body {
@@ -28,4 +34,8 @@ body {
 #root {
   width: 100%;
   height: 100vh;
+}
+
+h2 {
+  font-weight: bold;
 }

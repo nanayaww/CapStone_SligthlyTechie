@@ -6,7 +6,7 @@ export default function Header({ dark, toggleDarkMode }) {
       <h1 className=" font-bold text-black dark:text-white">Expense tracker</h1>
       <span className=" w-8 ">
         <button className=" " onClick={toggleDarkMode}>
-          {dark ? <CiDark /> : <CiLight />}
+          {dark ? <CiDark /> : <CiLight className="text-white" />}
         </button>
       </span>
     </div>

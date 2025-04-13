@@ -19,16 +19,23 @@ export default function Filter({ categories, expenses, setFilteredExpenses }) {
   return (
     <div>
       <select
-        className="border rounded-md ml-5 darkbg-slategray px-2.5 py-1"
+        className="outline-none border rounded-md ml-5 border-lightgrey dark:border-softgray 
+        dark:hover:bg-slate-400 dark:bg-slategray px-2.5 py-1"
         onChange={handleFilterChange}
         defaultValue="Filter"
       >
-        <option disabled value="Filter">
-          Filter by Category
+        <option
+          className="dark:bg-slategray dark:text-white text-black"
+          value="All"
+        >
+          All Categories
         </option>
-        <option value="All">All Categories</option>
         {categories.map((category) => (
-          <option key={category} value={category}>
+          <option
+            className="dark:bg-slategray dark:text-white text-black"
+            key={category}
+            value={category}
+          >
             {category}
           </option>
         ))}

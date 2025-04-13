@@ -32,13 +32,14 @@ export default function Form({ categories, expenses, setExpenses }) {
   }
 
   return (
-    <div className="w-[30vw] h-[50%] dark:bg-slategray p-6 flex rounded-md">
+    <div className="w-[30vw] h-[50%] dark:bg-slategray p-4 flex flex-col rounded-md">
       <form
-        className="w-full h-full flex flex-col gap-2.5 mt-2.5"
+        className="w-full border border-lightgrey dark:border-softgray  rounded p-2.5"
         onSubmit={handleSubmit}
       >
-        <h2>Add Expenses</h2>
-        <div className=" flex flex-col gap-5 border p-1.5 rounded ">
+        <h2 className=" font-bold dark:text-softgray mb-4 ">Add Expenses</h2>
+
+        <div className=" flex flex-col gap-2">
           <TextField
             type="number"
             name="Amount"
@@ -63,7 +64,12 @@ export default function Form({ categories, expenses, setExpenses }) {
             value={expense.Comment}
             setExpense={handleExpenseFields}
           />
-          <button className=" border rounded-md w-[100%]">Add Expense</button>
+          <button
+            className=" border rounded-md w-[100%] dark:border-softgray dark:text-white dark:bg-charcoal
+          dark:hover:bg-slate-400 dark:hover:text-black"
+          >
+            Add Expense
+          </button>
         </div>
       </form>
     </div>
