@@ -6,6 +6,7 @@ import Table from "./components/Table";
 import Summary from "./components/Summary";
 import SpendingInsights from "./components/SpendingInsights";
 import Filter from "./components/Filter";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
 export default function Expensetracker() {
   const [expenses, setExpenses] = useState([]);
@@ -14,6 +15,12 @@ export default function Expensetracker() {
   const [summaryValues, setSummaryValues] = useState({});
   const [filteredExpenses, setFilteredExpenses] = useState([]);
   const [darkMode, setDarkMode] = useState(true);
+
+  const [displayForm, setDisplayForm] = useState(false);
+
+  const showAddExpenseForm = () => {
+    setDisplayForm(!displayForm);
+  };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -83,26 +90,33 @@ export default function Expensetracker() {
     <div
       className={` ${
         !darkMode ? "dark" : ""
-      } flex flex-col h-full dark:bg-charcoal`}
+      } relative flex flex-col dark:bg-charcoal`}
     >
       <Header dark={darkMode} toggleDarkMode={toggleDarkMode} />
-      <div className="flex w-full h-full gap-4">
+      <div className=" w-full gap-4">
         {/* Add expense form */}
         <Form
+          displayForm={displayForm}
+          setDisplayForm={setDisplayForm}
           categories={categories}
           expenses={expenses}
           setExpenses={setExpenses}
         />
         {/* Shows total balances */}
-        <div className="w-[70vw] h-full grid grid-cols-1 grid-rows-[7rem_1fr_1fr] p-6">
-          <div className="flex gap-2.5 max-h-25">
+        <div className="w-full min-md:max-w-[80%] grid-cols-1 grid-rows-[7rem_1fr_1fr] items-center min-md:m-auto p-6">
+          <div className="flex gap-2.5 max-h-25 mb-4">
             <Balance name="Balance" amount={totalBalance.toFixed(2)} />
             <Balance name="Spent" amount={totalspent.toFixed(2)} />
           </div>
           {/* This shows list of expenses */}
           <div>
-            <div className="h-[20%] flex justify-between items-center dark:bg-charcoal dark:text-white ">
-              <h2>Expenses</h2>
+            <div className="h-[20%] flex justify-between items-center flex-wrap dark:bg-charcoal dark:text-white mb-4 ">
+              <h2>
+                Expenses{" "}
+                <span className=" inline-block">
+                  <IoMdAddCircleOutline onClick={showAddExpenseForm} />
+                </span>
+              </h2>
               <span className=" flex">
                 <Filter
                   categories={categories}
@@ -126,7 +140,7 @@ export default function Expensetracker() {
             </div>
           </div>
           {/* Summary of Expense */}
-          <div className="flex gap-8 mt-5">
+          <div className=" flex max-sm:flex-col  gap-8 mt-5">
             <Summary categories={categories} summaryValues={summaryValues} />
             <SpendingInsights
               summaryValues={summaryValues}
