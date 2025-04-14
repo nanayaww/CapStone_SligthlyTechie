@@ -21,10 +21,7 @@ export default function Table({ expenses, setExpenses }) {
       </thead>
       <tbody>
         {expenses.map((expense, index) => (
-          <tr
-            className="border-b-1 border-softgray overflow-hidden "
-            key={index}
-          >
+          <tr className="border-b-1 border-softgray " key={index}>
             <TableData value={expense.Description} />
             <TableData value={expense.Category} />
             <TableData value={expense.Date} />

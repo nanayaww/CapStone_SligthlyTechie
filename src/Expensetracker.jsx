@@ -90,7 +90,7 @@ export default function Expensetracker() {
     <div
       className={` ${
         !darkMode ? "dark" : ""
-      } relative flex flex-col dark:bg-charcoal`}
+      } h-full relative flex flex-col dark:bg-charcoal`}
     >
       <Header dark={darkMode} toggleDarkMode={toggleDarkMode} />
       <div className=" w-full gap-4">
