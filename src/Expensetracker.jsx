@@ -13,7 +13,7 @@ export default function Expensetracker() {
   const [totalspent, setTotalSpent] = useState(0);
   const [totalBalance, setTotalBalance] = useState(1500.0);
   const [summaryValues, setSummaryValues] = useState({});
-  const [filteredExpenses, setFilteredExpenses] = useState([]);
+  const [filteredCategory, setFilteredCategory] = useState("");
   const [darkMode, setDarkMode] = useState(true);
 
   const [displayForm, setDisplayForm] = useState(false);
@@ -25,6 +25,7 @@ export default function Expensetracker() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
   const initialBalance = 1500.0;
 
   const categories = [
@@ -122,8 +123,8 @@ export default function Expensetracker() {
               <span className=" flex">
                 <Filter
                   categories={categories}
-                  filteredExpenses={filteredExpenses}
-                  setFilteredExpenses={setFilteredExpenses}
+                  filteredCategory={filteredCategory}
+                  setFilteredCategory={setFilteredCategory}
                   expenses={expenses}
                   setExpenses={setExpenses}
                 />
@@ -138,7 +139,11 @@ export default function Expensetracker() {
             </div>
             {/* Display table */}
             <div className="border-lightgrey dark:bg-slategray border dark:border-softgray p-2.5 rounded-md h-40 overflow-y-scroll">
-              <Table expenses={expenses} setExpenses={setExpenses} />
+              <Table
+                filteredCategory={filteredCategory}
+                expenses={expenses}
+                setExpenses={setExpenses}
+              />
             </div>
           </div>
           {/* Summary of Expense */}

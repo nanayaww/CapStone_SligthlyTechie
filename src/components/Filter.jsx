@@ -1,26 +1,26 @@
 export default function Filter({
   categories,
-  expenses,
-  setExpenses,
-  filteredExpenses,
-  setFilteredExpenses,
+  filteredCategory,
+  setFilteredCategory,
 }) {
   const handleFilterChange = (e) => {
-    const selectedCategory = e.target.value;
+    setFilteredCategory(e.target.value);
 
-    // If "All" is selected, show all expenses
-    if (selectedCategory === "All") {
-      setFilteredExpenses([]);
-      return;
-    }
+    console.log(filteredCategory);
 
-    // Filter expenses to only show the selected category
-    const filtered = expenses.filter((expense) => {
-      return expense.Category === selectedCategory;
-    });
+    // // Filter expenses to only show the selected category
+    // const filtered = expenses.filter((expense) => {
+    //   return expense.Category === selectedCategory;
+    // });
+    // console.log(filtered);
 
-    setFilteredExpenses(filtered);
-    setExpenses(filteredExpenses);
+    // setFilteredExpenses(filtered);
+    // // If "All" is selected, show all expenses
+    // if (selectedCategory === "All") {
+    //   setExpenses(expenses);
+    // } else {
+    //   setExpenses([filteredExpenses]);
+    // }
   };
 
   const options = categories.map((category) => (
@@ -44,7 +44,7 @@ export default function Filter({
       >
         <option
           className="dark:bg-slategray dark:text-white text-black"
-          value="All Categories"
+          value="All"
         >
           All Categories
         </option>
@@ -54,7 +54,11 @@ export default function Filter({
         className=" border rounded-md border-lightgrey dark:border-softgray 
         dark:hover:bg-slate-400 dark:bg-slategray px-0.5 py-1"
       >
-        <input type="date" placeholder="Date" />
+        <input
+          type="date"
+          placeholder="Date"
+          onChange={(e) => setFilteredCategory(e.target.value)}
+        />
       </button>
     </div>
   );

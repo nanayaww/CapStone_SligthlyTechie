@@ -2,28 +2,40 @@ import { MdDeleteOutline } from "react-icons/md";
 import TableData from "./TableData";
 import TableHead from "./TableHead";
 
-export default function Table({ expenses, setExpenses }) {
+export default function Table({ filteredCategory, expenses, setExpenses }) {
   function handleDelete(index) {
     const newExpenses = [...expenses]; // Create a copy of the array
     newExpenses.splice(index, 1); // Remove the item at index
     setExpenses(newExpenses); // Set the updated array
   }
-  const tableData = expenses.map((expense, index) => (
-    <tr className="border-b-1 border-softgray " key={index}>
-      <TableData value={expense.Description} />
-      <TableData value={expense.Category} />
-      <TableData value={expense.Date} />
-      <TableData value={expense.Amount} />
-      <TableData
-        value={
-          <MdDeleteOutline
-            className="cursor-pointer"
-            onClick={() => handleDelete(index)}
-          />
-        }
-      />
-    </tr>
-  ));
+
+  function handleFilter(expense) {
+    if (filteredCategory === "" || filteredCategory === "All") {
+      return expense;
+    } else if (filteredCategory === expense.Date) {
+      return expense;
+    }
+    return expense.Category === filteredCategory;
+  }
+
+  const tableData = expenses
+    .filter((expense) => handleFilter(expense))
+    .map((expense, index) => (
+      <tr className="border-b-1 border-softgray " key={index}>
+        <TableData value={expense.Description} />
+        <TableData value={expense.Category} />
+        <TableData value={expense.Date} />
+        <TableData value={expense.Amount} />
+        <TableData
+          value={
+            <MdDeleteOutline
+              className="cursor-pointer"
+              onClick={() => handleDelete(index)}
+            />
+          }
+        />
+      </tr>
+    ));
 
   const noExpense = (
     <tr>

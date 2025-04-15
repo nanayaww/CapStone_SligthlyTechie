@@ -12,6 +12,7 @@ export default function Form({
   const [expense, setExpense] = useState({
     Description: "",
     Category: "",
+    Date: "",
     Amount: "",
     Comment: "",
   });
@@ -35,17 +36,18 @@ export default function Form({
     // Create new expense
     const newExpense = {
       ...expense,
-      Date: new Date().toDateString(),
-      id: Date.now(),
+      id: new Date(expense.Date).toDateString(),
     };
 
     // Add to expenses array
     setExpenses([...expenses, newExpense]);
+    console.log(expenses);
 
     // Clear form
     setExpense({
       Description: "",
       Category: "",
+      Date: "",
       Amount: "",
       Comment: "",
     });
@@ -82,13 +84,6 @@ export default function Form({
 
         <div className="flex flex-col gap-3">
           <TextField
-            type="number"
-            name="Amount"
-            value={expense.Amount}
-            setExpense={handleExpenseFields}
-            required
-          />
-          <TextField
             type="text"
             name="Description"
             value={expense.Description}
@@ -102,6 +97,21 @@ export default function Form({
             setExpense={handleExpenseFields}
             required
           />
+          <TextField
+            type="date"
+            name="Date"
+            value={expense.Date}
+            setExpense={handleExpenseFields}
+            required
+          />
+          <TextField
+            type="number"
+            name="Amount"
+            value={expense.Amount}
+            setExpense={handleExpenseFields}
+            required
+          />
+
           <TextField
             type="text"
             name="Comment"
