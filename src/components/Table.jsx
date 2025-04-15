@@ -8,6 +8,28 @@ export default function Table({ expenses, setExpenses }) {
     newExpenses.splice(index, 1); // Remove the item at index
     setExpenses(newExpenses); // Set the updated array
   }
+  const tableData = expenses.map((expense, index) => (
+    <tr className="border-b-1 border-softgray " key={index}>
+      <TableData value={expense.Description} />
+      <TableData value={expense.Category} />
+      <TableData value={expense.Date} />
+      <TableData value={expense.Amount} />
+      <TableData
+        value={
+          <MdDeleteOutline
+            className="cursor-pointer"
+            onClick={() => handleDelete(index)}
+          />
+        }
+      />
+    </tr>
+  ));
+
+  const noExpense = (
+    <tr>
+      <td>No expenses</td>
+    </tr>
+  );
 
   return (
     <table className=" w-full text-left border-collapse ">
@@ -19,24 +41,7 @@ export default function Table({ expenses, setExpenses }) {
           <TableHead value="Amount" />
         </tr>
       </thead>
-      <tbody>
-        {expenses.map((expense, index) => (
-          <tr className="border-b-1 border-softgray " key={index}>
-            <TableData value={expense.Description} />
-            <TableData value={expense.Category} />
-            <TableData value={expense.Date} />
-            <TableData value={expense.Amount} />
-            <TableData
-              value={
-                <MdDeleteOutline
-                  className="cursor-pointer"
-                  onClick={() => handleDelete(index)}
-                />
-              }
-            />
-          </tr>
-        ))}
-      </tbody>
+      <tbody>{expenses.length > 0 ? tableData : noExpense}</tbody>
     </table>
   );
 }

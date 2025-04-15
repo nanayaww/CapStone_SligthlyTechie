@@ -111,12 +111,14 @@ export default function Expensetracker() {
           {/* This shows list of expenses */}
           <div>
             <div className="h-[20%] flex justify-between items-center flex-wrap dark:bg-charcoal dark:text-white mb-4 ">
-              <h2>
-                Expenses{" "}
-                <span className=" inline-block">
-                  <IoMdAddCircleOutline onClick={showAddExpenseForm} />
-                </span>
-              </h2>
+              <span>
+                <h2>
+                  Expenses{" "}
+                  <span className=" inline-block">
+                    <IoMdAddCircleOutline onClick={showAddExpenseForm} />
+                  </span>
+                </h2>
+              </span>
               <span className=" flex">
                 <Filter
                   categories={categories}
@@ -126,8 +128,8 @@ export default function Expensetracker() {
                   setExpenses={setExpenses}
                 />
                 <button
-                  className="border rounded-md ml-5 dark:bg-slategray dark:hover:bg-slate-400
-                  dark:hover:text-black  px-2.5 py-1"
+                  className="border rounded-md ml-5 border-lightgrey dark:bg-slategray dark:hover:bg-slate-400
+                  dark:hover:text-black  px-1 py-1"
                   onClick={exportCSV}
                 >
                   Export csv
