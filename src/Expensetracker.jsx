@@ -7,6 +7,7 @@ import Summary from "./components/Summary";
 import SpendingInsights from "./components/SpendingInsights";
 import Filter from "./components/Filter";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import { CiImport } from "react-icons/ci";
 
 export default function Expensetracker() {
   const [expenses, setExpenses] = useState([]);
@@ -104,7 +105,7 @@ export default function Expensetracker() {
           setExpenses={setExpenses}
         />
         {/* Shows total balances */}
-        <div className="w-full min-md:max-w-[80%] grid-cols-1 grid-rows-[7rem_1fr_1fr] items-center min-md:m-auto p-6">
+        <div className="w-full min-md:max-w-[80%] grid-cols-1 grid-rows-[7rem_1fr_1fr] items-center min-md:m-auto px-6">
           <div className="flex gap-2.5 max-h-25 mb-4">
             <Balance name="Balance" amount={totalBalance.toFixed(2)} />
             <Balance name="Spent" amount={totalspent.toFixed(2)} />
@@ -112,13 +113,11 @@ export default function Expensetracker() {
           {/* This shows list of expenses */}
           <div>
             <div className="h-[20%] flex justify-between items-center flex-wrap dark:bg-charcoal dark:text-white mb-4 ">
-              <span>
-                <h2>
-                  Expenses{" "}
-                  <span className=" inline-block">
-                    <IoMdAddCircleOutline onClick={showAddExpenseForm} />
-                  </span>
-                </h2>
+              <span className=" flex items-center gap-2">
+                <h2>Expenses</h2>
+                <span className=" inline-block">
+                  <IoMdAddCircleOutline onClick={showAddExpenseForm} />
+                </span>
               </span>
               <span className=" flex">
                 <Filter
@@ -132,13 +131,13 @@ export default function Expensetracker() {
                   className="border rounded-md ml-5 border-lightgrey dark:bg-slategray dark:hover:bg-slate-400
                   dark:hover:text-black  px-1 py-1"
                   onClick={exportCSV}
-                >
-                  Export csv
+                ><span className=" flex items-center gap-2">csv <CiImport/></span>
+                  
                 </button>
               </span>
             </div>
             {/* Display table */}
-            <div className="border-lightgrey dark:bg-slategray border dark:border-softgray p-2.5 rounded-md h-40 overflow-y-scroll">
+            <div className=" shadow border-lightgrey dark:bg-slategray border dark:border-softgray p-2.5 rounded-md h-40 overflow-y-scroll">
               <Table
                 filteredCategory={filteredCategory}
                 expenses={expenses}

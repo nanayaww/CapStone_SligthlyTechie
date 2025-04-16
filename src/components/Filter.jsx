@@ -34,7 +34,7 @@ export default function Filter({
   ));
 
   return (
-    <div className=" flex items-center gap-5">
+    <div className=" flex wrap items-center gap-5">
       <h2>Filter:</h2>
       <select
         className="  outline-none border rounded-md border-lightgrey dark:border-softgray 

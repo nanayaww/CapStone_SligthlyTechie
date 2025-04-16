@@ -26,6 +26,7 @@ export default function Table({ filteredCategory, expenses, setExpenses }) {
         <TableData value={expense.Category} />
         <TableData value={expense.Date} />
         <TableData value={expense.Amount} />
+        <TableData value={expense.Comment} />
         <TableData
           value={
             <MdDeleteOutline
@@ -51,6 +52,7 @@ export default function Table({ filteredCategory, expenses, setExpenses }) {
           <TableHead value="Category" />
           <TableHead value="Date" />
           <TableHead value="Amount" />
+          <TableHead value="Comment" />
         </tr>
       </thead>
       <tbody>{expenses.length > 0 ? tableData : noExpense}</tbody>
